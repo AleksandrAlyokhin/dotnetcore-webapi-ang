@@ -17,7 +17,7 @@ namespace dotnetcorewebapiang.Migrations
 
             modelBuilder.Entity("DotnetcoreWebapiAng.Models.Role", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
@@ -31,7 +31,7 @@ namespace dotnetcorewebapiang.Migrations
 
             modelBuilder.Entity("DotnetcoreWebapiAng.Models.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Loggin");

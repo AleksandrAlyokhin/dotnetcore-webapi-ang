@@ -16,14 +16,14 @@ namespace  DotnetcoreWebapiAng.Models
 
     public class Role
     {
-        public Guid Id {get; set;}
+        public Int32 Id {get; set;}
         public String Name {get; set;}
         public String Note {get; set;}
     }
 
     public class User
     {
-        public Guid Id {get; set;}
+        public Int32 Id {get; set;}
         public String Loggin {get; set;}
         public String Name {get; set;}
     }
