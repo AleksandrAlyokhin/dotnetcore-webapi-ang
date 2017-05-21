@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotnetcoreWebapiAng.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class GroupsController : Controller
     {
 
         [HttpGet]
         public JsonResult Get()
         {
-            User[] result = null;
+            Group[] result = null;
             using (var db = new BloggingContext())
             {
-                result = db.Users.ToArray();
+                result = db.Groups.ToArray();
             }
 
             return Json(result);
@@ -24,41 +24,41 @@ namespace DotnetcoreWebapiAng.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            User result = null;
+            Group result = null;
             using (var db = new BloggingContext())
             {
-                result = db.Users.SingleOrDefault(_ => _.Id == id);
+                result = db.Groups.SingleOrDefault(_ => _.Id == id);
             }
 
             return Json(result);
         }
 
         [HttpPost]
-        public void Post([FromBody]User user)
+        public void Post([FromBody]Group group)
         {
             using (var db = new BloggingContext())
             {
                 int newId = 0;
-                if (db.Users.Any())
+                if (db.Groups.Any())
                 {
-                    newId = db.Users.Max(_ => _.Id);
+                    newId = db.Groups.Max(_ => _.Id);
                 }
-                user.Id = ++newId; // Хз чет
-                db.Users.Add(user);
+                group.Id = ++newId; // Хз чет
+                db.Groups.Add(group);
                 db.SaveChanges();
             }
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]User user)
+        public void Put(int id, [FromBody]Group group)
         {
-            if (id == user.Id)
+            if (id == group.Id)
             {
                 using (var db = new BloggingContext())
                 {
-                    if (db.Users.Any(_=>_.Id == id))
+                    if (db.Groups.Any(_=>_.Id == id))
                     {
-                        db.Update(user);
+                        db.Update(group);
                         db.SaveChanges();
                     }
                 }
@@ -70,10 +70,10 @@ namespace DotnetcoreWebapiAng.Controllers
         {
             using (var db = new BloggingContext())
             {
-                var user = db.Users.SingleOrDefault(_=>_.Id== id);
-                if (user != null)
+                var group = db.Groups.SingleOrDefault(_=>_.Id== id);
+                if (group != null)
                 {
-                    db.Users.Remove(user);
+                    db.Groups.Remove(group);
                     db.SaveChanges();
                 }
             }
