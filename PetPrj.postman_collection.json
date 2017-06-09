@@ -1,0 +1,215 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PetPrj",
+		"_postman_id": "4843889a-4811-d673-eafc-015a33ad0ac3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"url": "http://localhost:5000/api/Users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWx5b2toaW5hYTozd2NlZGJi",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Users get"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"url": "http://localhost:5000/api/Users/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWx5b2toaW5hYTozd2NlZGJi",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Users get id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"url": "http://localhost:5000/api/Users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"0\",\n\t\"UserName\":\"dfdfdf\",\n\t\"Password\":\"fdfdff\"\n}"
+				},
+				"description": "Users post"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"url": "http://localhost:5000/api/Users/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWx5b2toaW5hYTozd2NlZGJi",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"3\",\n\t\"UserName\":\"User22\",\n\t\"Password\":\"12345\"\n}\n"
+				},
+				"description": "Users put"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Users",
+			"request": {
+				"url": "http://localhost:5000/api/Users/4",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWx5b2toaW5hYTozd2NlZGJi",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"3\",\n\t\"UserName\":\"User22\",\n\t\"Password\":\"12345\"\n}\n"
+				},
+				"description": "Users Delete"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Groups",
+			"request": {
+				"url": "http://localhost:5000/api/Groups",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"0\",\n\t\"Name\":\"Group4\"\n}\n\n"
+				},
+				"description": "Groups post"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Groups",
+			"request": {
+				"url": "http://localhost:5000/api/Groups",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"0\",\n\t\"Name\":\"Group3\"\n}\n\n"
+				},
+				"description": "Groups get"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Groups/2",
+			"request": {
+				"url": "http://localhost:5000/api/Groups",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"0\",\n\t\"Name\":\"Group3\"\n}\n\n"
+				},
+				"description": "Groups get id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Groups",
+			"request": {
+				"url": "http://localhost:5000/api/Groups/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\":\"2\",\n\t\"Name\":\"GroupUpdate\"\n}\n\n"
+				},
+				"description": "Groups put"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Groups/3",
+			"request": {
+				"url": "http://localhost:5000/api/Groups/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n"
+				},
+				"description": "Groups delete"
+			},
+			"response": []
+		}
+	]
+}
