@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetcoreWebapiAng.Controllers
@@ -9,7 +10,24 @@ namespace DotnetcoreWebapiAng.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        [Authorize]
+        [Route("getlogin")]
+        [HttpGet]
+        public IActionResult GetLogin()
+        {
+            var r = Request;
+            return Ok($"Ваш логин {User.Identity.Name}");
+        }
+
+        [Authorize(Roles = "admin")]
+        [Route("getrole")]
+        public IActionResult GetRole()
+        {
+            return Ok("Ваша роль : администратор");
+        }
+
         // GET api/values
+        [Authorize]
         [HttpGet]
         public IEnumerable<string> Get()
         {
