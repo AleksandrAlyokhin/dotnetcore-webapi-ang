@@ -43,7 +43,7 @@
                 $('.userInfo').css('display', 'block');
                 $('.loginForm').css('display', 'none');
                 // сохраняем в хранилище sessionStorage токен доступа
-                sessionStorage.setItem(tokenKey, data.accsess_token);
+                sessionStorage.setItem(tokenKey, data.access_token);
                 console.log(data.access_token);
             }).fail(function (data) {
                 console.log(data);
