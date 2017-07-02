@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.IdentityModel.Tokens;
+using DotnetcoreWebapiAng.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnetcore_webapi_ang
 {
@@ -25,17 +28,22 @@ namespace dotnetcore_webapi_ang
         }
 
         public IConfigurationRoot Configuration { get; }
+        //public IConfiguration AppConfiguration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
+            var connection = Configuration["HEROKU_CON"];
+            Console.WriteLine(connection);
+            services.AddDbContext<BloggingContext>(options => options.UseNpgsql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -58,8 +66,9 @@ namespace dotnetcore_webapi_ang
                 }
             });
 
+            app.UseExceptionHandler("/index");
+
             app.UseMvc();
-            
         }
     }
 }

@@ -8,12 +8,18 @@ namespace DotnetcoreWebapiAng.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
+        private BloggingContext _dbContext;
+
+        public UsersController(BloggingContext dbContext)
+        {
+            _dbContext=dbContext;
+        }
 
         [HttpGet]
         public JsonResult Get()
         {
             User[] result = null;
-            using (var db = new BloggingContext())
+            using (var db =  _dbContext)
             {
                 result = db.Users.ToArray();
             }
@@ -25,7 +31,7 @@ namespace DotnetcoreWebapiAng.Controllers
         public JsonResult Get(int id)
         {
             User result = null;
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 result = db.Users.SingleOrDefault(_ => _.Id == id);
             }
@@ -36,7 +42,7 @@ namespace DotnetcoreWebapiAng.Controllers
         [HttpPost]
         public void Post([FromBody]User user)
         {
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 int newId = 0;
                 if (db.Users.Any())
@@ -54,7 +60,7 @@ namespace DotnetcoreWebapiAng.Controllers
         {
             if (id == user.Id)
             {
-                using (var db = new BloggingContext())
+                using (var db = _dbContext)
                 {
                     if (db.Users.Any(_=>_.Id == id))
                     {
@@ -68,7 +74,7 @@ namespace DotnetcoreWebapiAng.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 var user = db.Users.SingleOrDefault(_=>_.Id== id);
                 if (user != null)

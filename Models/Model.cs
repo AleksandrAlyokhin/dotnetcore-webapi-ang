@@ -1,6 +1,7 @@
 
 using System;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace  DotnetcoreWebapiAng.Models
 {
@@ -9,9 +10,14 @@ namespace  DotnetcoreWebapiAng.Models
         public DbSet<User> Users {get; set;}
         public DbSet<Group> Groups {get; set;}
 
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder){
-            optionsBuilder.UseSqlite("Data Source=Test.db");
+        public BloggingContext(DbContextOptions<BloggingContext> options):base(options)
+        {
+
         }
+
+        //protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder){
+        //    optionsBuilder.UseSqlite("Data Source=Test.db");
+        //}
     }
 
     public class Group

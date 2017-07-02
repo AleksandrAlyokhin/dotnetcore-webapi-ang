@@ -8,12 +8,18 @@ namespace DotnetcoreWebapiAng.Controllers
     [Route("api/[controller]")]
     public class GroupsController : Controller
     {
+        private BloggingContext _dbContext;
+
+        public GroupsController(BloggingContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         [HttpGet]
         public JsonResult Get()
         {
             Group[] result = null;
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 result = db.Groups.ToArray();
             }
@@ -25,7 +31,7 @@ namespace DotnetcoreWebapiAng.Controllers
         public JsonResult Get(int id)
         {
             Group result = null;
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 result = db.Groups.SingleOrDefault(_ => _.Id == id);
             }
@@ -36,7 +42,7 @@ namespace DotnetcoreWebapiAng.Controllers
         [HttpPost]
         public void Post([FromBody]Group group)
         {
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 int newId = 0;
                 if (db.Groups.Any())
@@ -54,7 +60,7 @@ namespace DotnetcoreWebapiAng.Controllers
         {
             if (id == group.Id)
             {
-                using (var db = new BloggingContext())
+                using (var db = _dbContext)
                 {
                     if (db.Groups.Any(_=>_.Id == id))
                     {
@@ -68,7 +74,7 @@ namespace DotnetcoreWebapiAng.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            using (var db = new BloggingContext())
+            using (var db = _dbContext)
             {
                 var group = db.Groups.SingleOrDefault(_=>_.Id== id);
                 if (group != null)
